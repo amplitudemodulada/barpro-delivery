@@ -58,7 +58,7 @@ function formatPhone(value) {
 }
 
 export default function CheckoutForm() {
-  const { items, total, closeCheckout, closeCart } = useCart()
+  const { items, total, isCheckoutOpen, closeCheckout, closeCart } = useCart()
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
@@ -131,6 +131,8 @@ export default function CheckoutForm() {
       closeCart()
     }, 2000)
   }
+
+  if (!isCheckoutOpen) return null
 
   return (
     <div className="modal-overlay" onClick={closeCheckout}>
