@@ -199,6 +199,49 @@ export const products = [
   { id: 148, name: 'Gatorade Tangerina',  category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 8.00, emoji: '⚡', popular: false, alcohol: false },
   { id: 149, name: 'Powerade Morango',    category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 7.00, emoji: '⚡', popular: false, alcohol: false },
   { id: 150, name: 'Powerade Maracujá',   category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 7.00, emoji: '⚡', popular: false, alcohol: false },
+
+  // ═══════════════════════════════════════════
+  // MAIS SALGADINHOS E SNACKS
+  // ═══════════════════════════════════════════
+  { id: 151, name: 'Cebolitos',           category: 'conveniencia', subcategory: 'Salgadinhos', volume: 'Pacote 100g', price: 5.00, emoji: '🧅', popular: false, alcohol: false },
+  { id: 152, name: 'Fandangos Queijo',    category: 'conveniencia', subcategory: 'Salgadinhos', volume: 'Pacote 100g', price: 5.00, emoji: '🟡', popular: false, alcohol: false },
+  { id: 153, name: 'Baconzitos',          category: 'conveniencia', subcategory: 'Salgadinhos', volume: 'Pacote 85g',  price: 5.50, emoji: '🥓', popular: false, alcohol: false },
+  { id: 154, name: 'Pipoca Micro-ondas',  category: 'conveniencia', subcategory: 'Salgadinhos', volume: 'Pacote 100g', price: 4.50, emoji: '🍿', popular: true,  alcohol: false },
+  { id: 155, name: 'Amendoim Churrasco',  category: 'conveniencia', subcategory: 'Salgadinhos', volume: 'Pacote 200g', price: 7.00, emoji: '🥜', popular: false, alcohol: false },
+  { id: 156, name: 'Amendoim Pimenta',    category: 'conveniencia', subcategory: 'Salgadinhos', volume: 'Pacote 200g', price: 7.00, emoji: '🥜', popular: false, alcohol: false },
+  { id: 157, name: 'Torresmo',            category: 'conveniencia', subcategory: 'Salgadinhos', volume: 'Pacote 100g', price: 8.00, emoji: '🥓', popular: false, alcohol: false },
+
+  // GULOSEIMAS
+  { id: 158, name: 'Chocolate Diamante Negro', category: 'conveniencia', subcategory: 'Guloseimas', volume: 'Barra 90g',  price: 8.00, emoji: '🍫', popular: false, alcohol: false },
+  { id: 159, name: 'Sonho de Valsa',      category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Unidade 25g', price: 3.00, emoji: '🍫', popular: true,  alcohol: false },
+  { id: 160, name: 'Ouro Branco',          category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Unidade 24g', price: 3.00, emoji: '🍫', popular: false, alcohol: false },
+  { id: 161, name: 'Paçoca',               category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Unidade 35g', price: 2.00, emoji: '🥜', popular: true,  alcohol: false },
+  { id: 162, name: 'Pé de Moleque',        category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Unidade 40g', price: 2.50, emoji: '🍬', popular: false, alcohol: false },
+  { id: 163, name: 'Chiclete Bubbaloo',   category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Unidade',     price: 1.00, emoji: '🟣', popular: false, alcohol: false },
+  { id: 164, name: 'Pirulito Pop',        category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Unidade',     price: 1.00, emoji: '🍭', popular: false, alcohol: false },
+
+  // MERCEARIA / MERCADO
+  { id: 165, name: 'Nescafé Solúvel',      category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pote 100g',   price: 12.00, emoji: '☕', popular: true,  alcohol: false },
+  { id: 166, name: '3 Corações Solúvel',   category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pote 100g',   price: 10.00, emoji: '☕', popular: false, alcohol: false },
+  { id: 167, name: 'Nescau',               category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pote 400g',   price: 10.00, emoji: '🥛', popular: false, alcohol: false },
+  { id: 168, name: 'Toddy',                category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pote 400g',   price: 9.00,  emoji: '🥛', popular: false, alcohol: false },
+  { id: 169, name: 'Açúcar Cristal',       category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pacote 1kg',  price: 5.00,  emoji: '🍚', popular: false, alcohol: false },
+  { id: 170, name: 'Adoçante Zero-Cal',    category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Frasco 100ml', price: 8.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 171, name: 'Leite Moça',           category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Lata 395g',   price: 7.00,  emoji: '🥛', popular: false, alcohol: false },
+  { id: 172, name: 'Cream Cracker',        category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pacote 200g', price: 5.00,  emoji: '🍪', popular: false, alcohol: false },
+  { id: 173, name: 'Biscoito Maizena',     category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pacote 170g', price: 4.50,  emoji: '🍪', popular: false, alcohol: false },
+  { id: 174, name: 'Biscoito Recheado',    category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Pacote 140g', price: 4.00,  emoji: '🍪', popular: false, alcohol: false },
+  { id: 175, name: 'Pão de Queijo Congelado', category: 'conveniencia', subcategory: 'Mercearia', volume: 'Pacote 300g', price: 10.00, emoji: '🧀', popular: true,  alcohol: false },
+  { id: 176, name: 'Macarrão Instantâneo Nissin', category: 'conveniencia', subcategory: 'Mercearia', volume: 'Unidade 85g', price: 3.50, emoji: '🍜', popular: true, alcohol: false },
+  { id: 177, name: 'Cup Noodles',          category: 'conveniencia', subcategory: 'Mercearia',    volume: 'Unidade 65g', price: 6.00,  emoji: '🍜', popular: false, alcohol: false },
+  { id: 178, name: 'Sardinha em Lata',     category: 'conveniencia', subcategory: 'Petiscos',     volume: 'Lata 125g',   price: 6.00,  emoji: '🐟', popular: false, alcohol: false },
+  { id: 179, name: 'Atum Ralado',          category: 'conveniencia', subcategory: 'Petiscos',     volume: 'Lata 170g',   price: 7.00,  emoji: '🐟', popular: false, alcohol: false },
+
+  // MAIS CHURRASCO
+  { id: 180, name: 'Farofa Pronta',        category: 'gelo', subcategory: 'Churrasco',            volume: 'Pacote 500g', price: 6.00,  emoji: '🍚', popular: false, alcohol: false },
+  { id: 181, name: 'Vinagrete Pronto',     category: 'gelo', subcategory: 'Churrasco',            volume: 'Pote 300g',   price: 8.00,  emoji: '🥗', popular: false, alcohol: false },
+  { id: 182, name: 'Espetinho de Linguiça', category: 'gelo', subcategory: 'Churrasco',           volume: 'Pacote 8 unid', price: 26.00, emoji: '🌭', popular: false, alcohol: false },
+  { id: 183, name: 'Carvão Vegetal Premium', category: 'gelo', subcategory: 'Carvão',             volume: 'Saco 10kg',   price: 35.00, emoji: '🔥', popular: false, alcohol: false },
 ]
 
 export const categoryMap = Object.fromEntries(categories.map(c => [c.id, c]))
