@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useProducts } from '../context/ProductContext'
 import ProductCard from './ProductCard'
 
-export default function ProductGrid({ activeCategory, searchQuery, adminMode, onEdit, onDelete }) {
+export default function ProductGrid({ activeCategory, searchQuery, adminMode, isOpen, onEdit, onDelete }) {
   const { products } = useProducts()
 
   const filtered = useMemo(() => {
@@ -61,6 +61,7 @@ export default function ProductGrid({ activeCategory, searchQuery, adminMode, on
                 key={product.id}
                 product={product}
                 adminMode={adminMode}
+                isOpen={isOpen}
                 onEdit={onEdit}
                 onDelete={onDelete}
               />

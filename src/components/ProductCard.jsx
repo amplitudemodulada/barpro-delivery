@@ -11,7 +11,7 @@ function bgGradient(category) {
   return map[category] || 'from-gray-100 to-gray-50'
 }
 
-export default function ProductCard({ product, adminMode, onEdit, onDelete }) {
+export default function ProductCard({ product, adminMode, isOpen, onEdit, onDelete }) {
   const { addItem, updateQuantity, items } = useCart()
   const cartItem = items.find(i => i.product.id === product.id)
   const qty = cartItem?.quantity || 0
@@ -37,7 +37,7 @@ export default function ProductCard({ product, adminMode, onEdit, onDelete }) {
         </div>
       )}
 
-      <div className={`relative h-28 bg-gradient-to-br ${bgGradient(product.category)} flex items-center justify-center`}>
+      <div className={`relative h-28 bg-gradient-to-br ${bgGradient(product.category)} flex items-center justify-center ${!isOpen && !adminMode ? 'opacity-50' : ''}`}>
         <span className="text-4xl select-none">{product.emoji}</span>
         {product.popular && (
           <span className="absolute top-2 right-2 bg-brand-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
@@ -52,9 +52,7 @@ export default function ProductCard({ product, adminMode, onEdit, onDelete }) {
       </div>
 
       <div className="p-3">
-        <h3 className="font-semibold text-sm text-gray-900 leading-tight truncate">
-          {product.name}
-        </h3>
+        <h3 className="font-semibold text-sm text-gray-900 leading-tight truncate">{product.name}</h3>
         <p className="text-xs text-gray-500 mt-0.5">{product.volume}</p>
 
         <div className="flex items-center justify-between mt-2">
@@ -64,7 +62,9 @@ export default function ProductCard({ product, adminMode, onEdit, onDelete }) {
 
           {!adminMode && (
             <div className="flex items-center gap-1">
-              {qty > 0 ? (
+              {!isOpen ? (
+                <span className="text-[10px] text-red-500 font-semibold">FECHADO</span>
+              ) : qty > 0 ? (
                 <>
                   <button
                     onClick={() => updateQuantity(product.id, qty - 1)}

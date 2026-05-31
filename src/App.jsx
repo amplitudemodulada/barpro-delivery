@@ -11,6 +11,7 @@ import CheckoutForm from './components/CheckoutForm'
 import AdminPanel from './components/AdminPanel'
 import AdminLoginModal from './components/AdminLoginModal'
 import ProductFormModal from './components/ProductFormModal'
+import ClosedOverlay from './components/ClosedOverlay'
 
 function AppContent() {
   const [activeCategory, setActiveCategory] = useState('')
@@ -19,6 +20,9 @@ function AppContent() {
   const [loginOpen, setLoginOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(() => {
+    try { return localStorage.getItem('barpro-open') !== 'false' } catch { return true }
+  })
   const { deleteProduct } = useProducts()
 
   useEffect(() => {
@@ -26,6 +30,10 @@ function AppContent() {
       setAdminMode(true)
     }
   }, [])
+
+  useEffect(() => {
+    try { localStorage.setItem('barpro-open', String(isOpen)) } catch {}
+  }, [isOpen])
 
   const handleAdminToggle = useCallback(() => {
     if (adminMode) {
@@ -66,6 +74,7 @@ function AppContent() {
   return (
     <>
       <Header
+        isOpen={isOpen}
         actions={
           <button
             onClick={handleAdminToggle}
@@ -83,17 +92,21 @@ function AppContent() {
         adminMode={adminMode}
         onToggle={handleLogout}
         onAdd={() => { setEditingProduct(null); setFormOpen(true) }}
+        isOpen={isOpen}
+        onToggleOpen={() => setIsOpen(prev => !prev)}
       />
       <ProductGrid
         activeCategory={activeCategory}
         searchQuery={searchQuery}
         adminMode={adminMode}
+        isOpen={isOpen}
         onEdit={handleEdit}
         onDelete={handleDelete}
       />
-      {!adminMode && <CartBar />}
+      {!adminMode && isOpen && <CartBar />}
       <CartModal />
       <CheckoutForm />
+      <ClosedOverlay isOpen={isOpen} adminMode={adminMode} />
 
       <AdminLoginModal
         open={loginOpen}

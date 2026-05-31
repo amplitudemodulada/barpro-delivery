@@ -1,6 +1,6 @@
 import { useProducts } from '../context/ProductContext'
 
-export default function Header({ actions }) {
+export default function Header({ actions, isOpen }) {
   const { categories } = useProducts()
 
   return (
@@ -10,7 +10,12 @@ export default function Header({ actions }) {
           🍺
         </div>
         <div className="flex-1 min-w-0">
-          <h1 className="text-lg font-bold text-gray-900 leading-tight">BarPro Delivery</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-lg font-bold text-gray-900 leading-tight">BarPro Delivery</h1>
+            <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${isOpen ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              {isOpen ? 'ABERTO' : 'FECHADO'}
+            </span>
+          </div>
           <p className="text-xs text-gray-500 truncate">
             {categories.map(c => c.icon).join(' ')} Seu Depósito de Bebidas
           </p>

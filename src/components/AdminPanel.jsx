@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useProducts } from '../context/ProductContext'
 
-export default function AdminPanel({ adminMode, onToggle, onAdd }) {
+export default function AdminPanel({ adminMode, onToggle, onAdd, isOpen, onToggleOpen }) {
   const { resetProducts } = useProducts()
   const [confirmReset, setConfirmReset] = useState(false)
 
@@ -14,7 +14,16 @@ export default function AdminPanel({ adminMode, onToggle, onAdd }) {
           <span className="text-sm font-semibold text-brand-700">⚙️ Modo Administrador</span>
           <span className="text-[10px] bg-brand-200 text-brand-800 px-1.5 py-0.5 rounded-full font-medium">PRODUTOS</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            onClick={onToggleOpen}
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors
+              ${isOpen
+                ? 'bg-red-100 text-red-700 hover:bg-red-200'
+                : 'bg-green-100 text-green-700 hover:bg-green-200'}`}
+          >
+            {isOpen ? '🔒 Fechar Estabelecimento' : '🔓 Abrir Estabelecimento'}
+          </button>
           <button onClick={onAdd} className="px-3 py-1.5 bg-brand-500 text-white text-xs font-semibold rounded-lg hover:bg-brand-600 transition-colors">
             + Novo Produto
           </button>
