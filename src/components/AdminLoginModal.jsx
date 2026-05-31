@@ -1,38 +1,50 @@
 import { useState } from 'react'
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'admin123'
-
-function constantTimeEqual(a, b) {
-  if (a.length !== b.length) return false
-  let result = 0
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i)
-  }
-  return result === 0
-}
-
 export default function AdminLoginModal({ open, onSuccess, onClose }) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [attempts, setAttempts] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   if (!open) return null
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     if (attempts >= 5) {
       setError('Muitas tentativas. Recarregue a página.')
       return
     }
-    if (constantTimeEqual(password, ADMIN_PASSWORD)) {
-      setPassword('')
-      setError('')
-      setAttempts(0)
-      onSuccess()
-    } else {
-      setAttempts(prev => prev + 1)
-      setError(`Senha incorreta (${attempts + 1}/5)`)
-      setPassword('')
+    if (!password.trim()) {
+      setError('Digite a senha')
+      return
+    }
+
+    setLoading(true)
+    setError('')
+
+    try {
+      const res = await fetch('/api/validate-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      })
+
+      const data = await res.json()
+
+      if (data.valid) {
+        setPassword('')
+        setError('')
+        setAttempts(0)
+        onSuccess()
+      } else {
+        setAttempts(prev => prev + 1)
+        setError(`Senha incorreta (${attempts + 1}/5)`)
+        setPassword('')
+      }
+    } catch {
+      setError('Erro de conexão com o servidor')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -56,16 +68,17 @@ export default function AdminLoginModal({ open, onSuccess, onClose }) {
                 className="form-input text-center text-lg tracking-widest"
                 autoFocus
                 autoComplete="off"
+                disabled={loading}
               />
               {error && (
                 <p className="text-xs text-red-500 text-center mt-2">{error}</p>
               )}
             </div>
 
-            <button type="submit" className="btn-primary">
-              Entrar
+            <button type="submit" disabled={loading} className="btn-primary flex items-center justify-center gap-2">
+              {loading ? '⏳ Verificando...' : 'Entrar'}
             </button>
-            <button type="button" onClick={onClose} className="btn-secondary">
+            <button type="button" onClick={onClose} disabled={loading} className="btn-secondary">
               Cancelar
             </button>
           </form>
