@@ -172,6 +172,33 @@ export const products = [
   { id: 125, name: 'Chocolate Lacta',     category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Barra 90g',    price: 7.50, emoji: '🍫', popular: false, alcohol: false },
   { id: 126, name: 'Bala Halls',          category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Caixa 20 unid', price: 3.00, emoji: '🍬', popular: false, alcohol: false },
   { id: 127, name: 'Mentos',              category: 'conveniencia', subcategory: 'Guloseimas',   volume: 'Tubo 14 unid', price: 5.00, emoji: '🍬', popular: false, alcohol: false },
+
+  // ═══════════════════════════════════════════
+  // MAIS ÁGUAS MINERAIS
+  // ═══════════════════════════════════════════
+  { id: 128, name: 'Crystal s/ Gás',      category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 2.50, emoji: '💧', popular: true,  alcohol: false },
+  { id: 129, name: 'Crystal c/ Gás',      category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 3.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 130, name: 'Crystal s/ Gás',      category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 1,5L',  price: 4.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 131, name: 'Bonafont s/ Gás',     category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 3.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 132, name: 'Bonafont s/ Gás',     category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 1,5L',  price: 5.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 133, name: 'Minalba s/ Gás',      category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 2.50, emoji: '💧', popular: false, alcohol: false },
+  { id: 134, name: 'Minalba c/ Gás',      category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 3.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 135, name: 'Ouro Fino s/ Gás',    category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 3.50, emoji: '💧', popular: false, alcohol: false },
+  { id: 136, name: 'Ouro Fino c/ Gás',    category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 4.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 137, name: 'Água Mineral Pedras',  category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 5.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 138, name: 'Água com Gás Garrafa', category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 1L',    price: 5.50, emoji: '💧', popular: false, alcohol: false },
+  { id: 139, name: 'Água Mineral 300ml',  category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 300ml', price: 2.00, emoji: '💧', popular: false, alcohol: false },
+  { id: 140, name: 'Água de Coco Verde',  category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 1L',    price: 8.00, emoji: '🥥', popular: true,  alcohol: false },
+  { id: 141, name: 'Água de Coco Sococo', category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 1L',    price: 7.00, emoji: '🥥', popular: false, alcohol: false },
+  { id: 142, name: 'H2OH! Limão',         category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 5.00, emoji: '🍋', popular: false, alcohol: false },
+  { id: 143, name: 'H2OH! Laranja',       category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 5.00, emoji: '🍊', popular: false, alcohol: false },
+  { id: 144, name: 'Aquarius Fresh Limão', category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 6.00, emoji: '🍋', popular: false, alcohol: false },
+  { id: 145, name: 'Aquarius Fresh Laranja', category: 'refrigerantes', subcategory: 'Hidratação', volume: 'Garrafa 500ml', price: 6.00, emoji: '🍊', popular: false, alcohol: false },
+  { id: 146, name: 'Gatorade Morango',    category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 8.00, emoji: '⚡', popular: false, alcohol: false },
+  { id: 147, name: 'Gatorade Maracujá',   category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 8.00, emoji: '⚡', popular: false, alcohol: false },
+  { id: 148, name: 'Gatorade Tangerina',  category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 8.00, emoji: '⚡', popular: false, alcohol: false },
+  { id: 149, name: 'Powerade Morango',    category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 7.00, emoji: '⚡', popular: false, alcohol: false },
+  { id: 150, name: 'Powerade Maracujá',   category: 'refrigerantes', subcategory: 'Hidratação',  volume: 'Garrafa 500ml', price: 7.00, emoji: '⚡', popular: false, alcohol: false },
 ]
 
 export const categoryMap = Object.fromEntries(categories.map(c => [c.id, c]))

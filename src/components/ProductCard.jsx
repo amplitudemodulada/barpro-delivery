@@ -11,13 +11,32 @@ function bgGradient(category) {
   return map[category] || 'from-gray-100 to-gray-50'
 }
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, adminMode, onEdit, onDelete }) {
   const { addItem, updateQuantity, items } = useCart()
   const cartItem = items.find(i => i.product.id === product.id)
   const qty = cartItem?.quantity || 0
 
   return (
-    <div className="product-card group">
+    <div className="product-card group relative">
+      {adminMode && (
+        <div className="absolute top-1 right-1 z-10 flex gap-1">
+          <button
+            onClick={() => onEdit?.(product)}
+            className="w-7 h-7 flex items-center justify-center rounded-full bg-white/90 shadow text-xs hover:bg-white transition-colors"
+            title="Editar"
+          >
+            ✏️
+          </button>
+          <button
+            onClick={() => onDelete?.(product)}
+            className="w-7 h-7 flex items-center justify-center rounded-full bg-white/90 shadow text-xs hover:bg-white transition-colors"
+            title="Excluir"
+          >
+            🗑️
+          </button>
+        </div>
+      )}
+
       <div className={`relative h-28 bg-gradient-to-br ${bgGradient(product.category)} flex items-center justify-center`}>
         <span className="text-4xl select-none">{product.emoji}</span>
         {product.popular && (
@@ -43,37 +62,37 @@ export default function ProductCard({ product }) {
             R$ {product.price.toFixed(2)}
           </span>
 
-          <div className="flex items-center gap-1">
-            {qty > 0 ? (
-              <>
-                <button
-                  onClick={() => updateQuantity(product.id, qty - 1)}
-                  className="qty-btn bg-red-50 text-red-500 hover:bg-red-100 active:bg-red-200"
-                >
-                  −
-                </button>
-                <span className="w-6 text-center text-sm font-bold tabular-nums">
-                  {qty}
-                </span>
+          {!adminMode && (
+            <div className="flex items-center gap-1">
+              {qty > 0 ? (
+                <>
+                  <button
+                    onClick={() => updateQuantity(product.id, qty - 1)}
+                    className="qty-btn bg-red-50 text-red-500 hover:bg-red-100 active:bg-red-200"
+                  >
+                    −
+                  </button>
+                  <span className="w-6 text-center text-sm font-bold tabular-nums">{qty}</span>
+                  <button
+                    onClick={() => addItem(product, 1)}
+                    className="qty-btn bg-brand-50 text-brand-600 hover:bg-brand-100 active:bg-brand-200"
+                  >
+                    +
+                  </button>
+                </>
+              ) : (
                 <button
                   onClick={() => addItem(product, 1)}
-                  className="qty-btn bg-brand-50 text-brand-600 hover:bg-brand-100 active:bg-brand-200"
+                  className="w-8 h-8 flex items-center justify-center rounded-full
+                             bg-brand-500 text-white text-lg font-bold
+                             hover:bg-brand-600 active:bg-brand-700
+                             transition-colors duration-150 shadow-sm"
                 >
                   +
                 </button>
-              </>
-            ) : (
-              <button
-                onClick={() => addItem(product, 1)}
-                className="w-8 h-8 flex items-center justify-center rounded-full
-                           bg-brand-500 text-white text-lg font-bold
-                           hover:bg-brand-600 active:bg-brand-700
-                           transition-colors duration-150 shadow-sm"
-              >
-                +
-              </button>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

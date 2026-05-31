@@ -1,10 +1,12 @@
 import { useMemo } from 'react'
-import { products as allProducts, categoryMap } from '../data/products'
+import { useProducts } from '../context/ProductContext'
 import ProductCard from './ProductCard'
 
-export default function ProductGrid({ activeCategory, searchQuery }) {
+export default function ProductGrid({ activeCategory, searchQuery, adminMode, onEdit, onDelete }) {
+  const { products } = useProducts()
+
   const filtered = useMemo(() => {
-    let result = allProducts
+    let result = products
 
     if (activeCategory) {
       result = result.filter(p => p.category === activeCategory)
@@ -20,7 +22,7 @@ export default function ProductGrid({ activeCategory, searchQuery }) {
     }
 
     return result
-  }, [activeCategory, searchQuery])
+  }, [activeCategory, searchQuery, products])
 
   const grouped = useMemo(() => {
     const groups = {}
@@ -55,7 +57,13 @@ export default function ProductGrid({ activeCategory, searchQuery }) {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {items.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                adminMode={adminMode}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
             ))}
           </div>
         </div>

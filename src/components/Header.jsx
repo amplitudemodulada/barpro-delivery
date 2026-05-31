@@ -1,8 +1,8 @@
-import { categories } from '../data/products'
+import { useProducts } from '../context/ProductContext'
 
-const categoryEmojis = Object.fromEntries(categories.map(c => [c.id, c.icon]))
+export default function Header({ actions }) {
+  const { categories } = useProducts()
 
-export default function Header() {
   return (
     <header className="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
@@ -15,6 +15,7 @@ export default function Header() {
             {categories.map(c => c.icon).join(' ')} Seu Depósito de Bebidas
           </p>
         </div>
+        {actions}
       </div>
     </header>
   )

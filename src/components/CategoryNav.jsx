@@ -1,7 +1,8 @@
 import { useRef, useEffect } from 'react'
-import { categories } from '../data/products'
+import { useProducts } from '../context/ProductContext'
 
 export default function CategoryNav({ active, onChange }) {
+  const { categories } = useProducts()
   const scrollRef = useRef(null)
 
   useEffect(() => {
