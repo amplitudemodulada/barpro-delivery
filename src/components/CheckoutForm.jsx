@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useCart } from '../context/CartContext'
 import { formatWhatsAppOrder, getWhatsAppUrl } from '../utils/whatsapp'
 
-const PHONE_NUMBER = '5521982277641'
+const PHONE_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '5521982277641'
 
 const initialForm = {
   nome: '',
@@ -62,6 +62,7 @@ export default function CheckoutForm() {
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
+  const submitLock = useRef(false)
 
   function setField(field, value) {
     setForm(prev => ({ ...prev, [field]: value }))
@@ -95,8 +96,10 @@ export default function CheckoutForm() {
 
   function handleSubmit(e) {
     e.preventDefault()
+    if (submitLock.current) return
     if (!validate()) return
 
+    submitLock.current = true
     setSubmitting(true)
 
     const message = formatWhatsAppOrder({
@@ -119,10 +122,14 @@ export default function CheckoutForm() {
 
     const url = getWhatsAppUrl(PHONE_NUMBER, message)
     window.open(url, '_blank')
-    setForm(initialForm)
-    setErrors({})
-    setSubmitting(false)
-    closeCart()
+
+    setTimeout(() => {
+      setForm(initialForm)
+      setErrors({})
+      setSubmitting(false)
+      submitLock.current = false
+      closeCart()
+    }, 2000)
   }
 
   return (
@@ -340,7 +347,7 @@ export default function CheckoutForm() {
             {submitting ? '⏳ Enviando...' : '💬 Confirmar Pedido via WhatsApp'}
           </button>
           <p className="text-center text-xs text-gray-400 pb-2">
-            Ao confirmar, você será direcionado ao WhatsApp para finalizar o pedido
+            Ao confirmar, você será direcionado ao WhatsApp. Seus dados serão enviados apenas para o depósito.
           </p>
         </form>
       </div>
